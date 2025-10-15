@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>春日雅集 · 清明纸鸢与柳冠</title>
+  <!-- 确保CDN资源兼容GitHub Pages -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fontslibrary.org//face/noto-serif-sc" rel="stylesheet">
+  <link href="https://fontlibrary.org//face/zcool-xiaowei" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colorss: {
+            spring: {
+              green: '#4D7C0F',      // 柳枝绿
+              light: '#A7F3D0',      // 嫩芽青
+              yellow: '#FBBF24',     // 迎春花黄
+              pink: '#FECACA',       // 樱花粉
+              brown: '#78350F'       // 木质棕
+            }
+          },
+          fontFamily: {
+            serif: ['Noto Serif SC', 'serif'],
+            sans: ['ZCOOL XiaoWei', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+      .bg-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
+      .kite-animation {
+        animation: kiteFly 8s ease-in-out infinite;
+      }
+      @keyframes kiteFly {
+        0%, 100% { transform: translateY(0) rotate(2deg); }
+        50% { transform: translateY(-15px) rotate(-2deg); }
+      }
+      .willow-animation {
+        animation: willowSway 6s ease-in-out infinite;
+      }
+      @keyframes willowSway {
+        0%, 100% { transform: translateX(0) rotate(0); }
+        50% { transform: translateX(10px) rotate(3deg); }
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-spring-light/30 bg-pattern text-spring-brown">
+  <!-- 导航栏 -->
+  <nav class="fixed w-full bg-white/80 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa fa-leaf text-spring-green text-2xl"></i>
+        <span class="font-serif font-bold text-xl text-spring-green">清明雅集</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="hover:text-spring-green transition-colors">首页</a>
+        <a href="#activity1" class="hover:text-spring-green transition-colors">风筝大赛</a>
+        <a href="#activity2" class="hover:text-spring-green transition-colors">柳枝赠礼</a>
+        <a href="#signup" class="hover:text-spring-green transition-colors">立即报名</a>
+        <a href="#contact" class="hover:text-spring-green transition-colors">联系我们</a>
+      </div>
+      
+      <button class="md:hidden text-spring-brown" id="menuBtn">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端菜单 -->
+    <div class="md:hidden hidden bg-white shadow-md absolute w-full" id="mobileMenu">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="#home" class="py-2 hover:text-spring-green transition-colors">首页</a>
+        <a href="#activity1" class="py-2 hover:text-spring-green transition-colors">风筝大赛</a>
+        <a href="#activity2" class="py-2 hover:text-spring-green transition-colors">柳枝赠礼</a>
+        <a href="#signup" class="py-2 hover:text-spring-green transition-colors">立即报名</a>
+        <a href="#contact" class="py-2 hover:text-spring-green transition-colors">联系我们</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
+  <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+    <!-- 清明风筝装饰 -->
+    <div class="absolute top-10 right-10 w-32 h-32 md:w-64 md:h-64 kite-animation opacity-70">
+      <img src="https://picsum.photos/id/1058/200/200" alt="清明风筝" class="w-full h-full object-contain">
+    </div>
+    <!-- 清明柳枝装饰 -->
+    <div class="absolute bottom-10 left-10 w-24 h-24 md:w-48 md:h-48 willow-animation opacity-70">
+      <img src="https://picsum.photos/id/116/200/200" alt="清明柳枝" class="w-full h-full object-contain">
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3.5rem)] mb-6 text-spring-green text-shadow leading-tight">
+          清明雅集 · 纸鸢寄情
+        </h1>
+        <p class="text-lg md:text-xl mb-8 text-spring-brown/80">
+          插柳祈福，绘鸢迎春，来门店赴一场春日之约
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#activity1" class="bg-spring-green hover:bg-spring-green/90 text-white py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            了解活动
+          </a>
+          <a href="#signup" class="bg-white hover:bg-white/90 text-spring-green border-2 border-spring-green py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+            到店参与
+          </a>
+        </div>
+        
+        <div class="mt-12 inline-block bg-white/70 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
+          <p class="flex items-center gap-2">
+            <i class="fa fa-calendar text-spring-green"></i>
+            <span>活动时间：2024年4月1日 - 4月15日（门店营业时间内）</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活动一：风筝制作大赛 -->
+  <section id="activity1" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <div class="md:w-1/2">
+          <!-- 清明风筝制作场景 -->
+          <img src="https://picsum.photos/id/106/600/400" alt="清明风筝制作" class="w-full h-auto rounded-xl shadow-xl">
+        </div>
+        
+        <div class="md:w-1/2">
+          <div class="inline-block px-4 py-1 bg-spring-light rounded-full mb-4">
+            <span class="text-spring-green font-medium">活动一</span>
+          </div>
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.5rem)] mb-6 text-spring-brown">
+            纸鸢绘春 · 青团相赠
+          </h2>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-light p-2 rounded-full text-spring-green mt-1">
+                <i class="fa fa-paint-brush"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">清明风筝DIY</h3>
+                <p class="text-spring-brown/80">门店提供空白风筝、环保颜料和画笔，可绘制清明元素（如柳燕、纸鸢、春景），单人或家庭组队均可参与。</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-light p-2 rounded-full text-spring-green mt-1">
+                <i class="fa fa-gift"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">完成即赠青团</h3>
+                <p class="text-spring-brown/80">完成作品即可领取门店手工青团一份，经典豆沙/咸蛋黄肉松口味可选，独立包装方便携带。</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-light p-2 rounded-full text-spring-green mt-1">
+                <i class="fa fa-trophy"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">评选赢好礼</h3>
+                <p class="text-spring-brown/80">自愿展示作品可参与"最具清明意境风筝"投票，周末评选获奖者，赠送门店定制清明书签套装。</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-spring-light/50 p-4 rounded-lg">
+            <p class="flex items-center gap-2 font-medium">
+              <i class="fa fa-clock-o text-spring-green"></i>
+              <span>活动时间：每日10:00-16:00（4月1日-4月10日）</span>
+            </p>
+            <p class="flex items-center gap-2 font-medium mt-2">
+              <i class="fa fa-map-marker text-spring-green"></i>
+              <span>活动地点：门店中庭手工区</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活动二：柳枝发冠赠礼 -->
+  <section id="activity2" class="py-16 md:py-24 bg-spring-light/20">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+        <div class="md:w-1/2">
+          <!-- 清明柳枝发冠 -->
+          <img src="https://picsum.photos/id/130/600/400" alt="清明柳枝发冠" class="w-full h-auto rounded-xl shadow-xl">
+        </div>
+        
+        <div class="md:w-1/2">
+          <div class="inline-block px-4 py-1 bg-spring-pink rounded-full mb-4">
+            <span class="text-spring-brown font-medium">活动二</span>
+          </div>
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.5rem)] mb-6 text-spring-brown">
+            消费赠柳 · 祈福安康
+          </h2>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-pink/50 p-2 rounded-full text-spring-brown mt-1">
+                <i class="fa fa-shopping-bag"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">满额即赠清明礼</h3>
+                <p class="text-spring-brown/80">门店餐饮消费满128元或零售消费满299元，即可获赠手工柳枝发冠一份，延续清明插柳祈福传统。</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-pink/50 p-2 rounded-full text-spring-brown mt-1">
+                <i class="fa fa-leaf"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">清明限定手作</h3>
+                <p class="text-spring-brown/80">新鲜柳枝搭配雏菊与素色丝带，门店每日手工制作，长度可调节，寓意驱邪避灾、迎接生机。</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="bg-spring-pink/50 p-2 rounded-full text-spring-brown mt-1">
+                <i class="fa fa-camera"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">打卡赢门店优惠券</h3>
+                <p class="text-spring-brown/80">佩戴发冠在门店清明主题打卡点拍照，发布社交平台并@门店官方账号，可额外获得5元无门槛优惠券。</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-spring-pink/30 p-4 rounded-lg">
+            <p class="flex items-center gap-2 font-medium">
+              <i class="fa fa-clock-o text-spring-brown"></i>
+              <span>活动时间：每日9:00-21:00（4月1日-4月15日）</span>
+            </p>
+            <p class="flex items-center gap-2 font-medium mt-2">
+              <i class="fa fa-exclamation-circle text-spring-brown"></i>
+              <span>提示：发冠每日限量，赠完可领3天内有效的门店兑换券</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 活动亮点 -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.5rem)] mb-4 text-spring-brown">
+          清明活动亮点
+        </h2>
+        <p class="text-spring-brown/80 text-lg">
+          来门店体验传统与创意的碰撞，感受不一样的清明氛围
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-spring-light/40 rounded-xl p-6 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+          <div class="w-14 h-14 bg-spring-green text-white rounded-full flex items-center justify-center mb-5">
+            <i class="fa fa-users text-2xl"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3 text-spring-brown">亲子共庆清明</h3>
+          <p class="text-spring-brown/80">
+            门店提供亲子专属风筝材料包，家长与孩子共同创作，了解清明习俗，留下温馨回忆。
+          </p>
+        </div>
+        
+        <div class="bg-spring-pink/30 rounded-xl p-6 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+          <div class="w-14 h-14 bg-spring-brown text-white rounded-full flex items-center justify-center mb-5">
+            <i class="fa fa-book text-2xl"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3 text-spring-brown">清明文化体验</h3>
+          <p class="text-spring-brown/80">
+            门店设置清明习俗展架，介绍风筝寄思念、插柳祈福等传统，搭配专人讲解，沉浸式感受文化。
+          </p>
+        </div>
+        
+        <div class="bg-spring-yellow/20 rounded-xl p-6 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+          <div class="w-14 h-14 bg-spring-green text-white rounded-full flex items-center justify-center mb-5">
+            <i class="fa fa-camera-retro text-2xl"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3 text-spring-brown">门店打卡胜地</h3>
+          <p class="text-spring-brown/80">
+            门店打造清明主题场景（柳枝墙、风筝廊、青团展），搭配活动道具，拍照发圈氛围感拉满。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 报名表单 -->
+  <section id="signup" class="py-16 md:py-24 bg-spring-green/10">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="p-8 md:p-10">
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2rem)] mb-6 text-spring-brown text-center">
+            预约到店参与活动
+          </h2>
+          <p class="text-center text-spring-brown/70 mb-8">
+            填写信息预约门店风筝制作名额，到店即可优先参与
+          </p>
+          
+          <form class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-spring-brown mb-1">姓名</label>
+              <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-spring-green focus:border-spring-green outline-none transition-all" placeholder="请输入您的姓名">
+            </div>
+            
+            <div>
+              <label for="phone" class="block text-sm font-medium text-spring-brown mb-1">手机号码</label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-spring-green focus:border-spring-green outline-none transition-all" placeholder="请输入您的手机号码">
+            </div>
+            
+            <div>
+              <label for="activity" class="block text-sm font-medium text-spring-brown mb-1">意向参与活动</label>
+              <select id="activity" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-spring-green focus:border-spring-green outline-none transition-all">
+                <option value="">请选择活动类型</option>
+                <option value="kite">风筝制作大赛</option>
+                <option value="willow">柳枝发冠赠礼</option>
+                <option value="both">两者都想参与</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="date" class="block text-sm font-medium text-spring-brown mb-1">计划到店日期</label>
+              <input type="date" id="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-spring-green focus:border-spring-green outline-none transition-all">
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-spring-brown mb-1">备注信息</label>
+              <textarea id="message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-spring-green focus:border-spring-green outline-none transition-all" placeholder="如人数、特殊需求等，请在此说明"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-spring-green hover:bg-spring-green/90 text-white py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg font-medium text-lg">
+              预约到店
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.5rem)] mb-12 text-spring-brown text-center">
+        常见问题
+      </h2>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="border border-spring-light rounded-lg overflow-hidden">
+          <button class="faq-btn w-full flex justify-between items-center p-5 text-left bg-spring-light/30 hover:bg-spring-light/50 transition-colors">
+            <span class="font-medium">门店提供的风筝材料有哪些？</span>
+            <i class="fa fa-chevron-down text-spring-green transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-5 border-t border-spring-light/50">
+            <p class="text-spring-brown/80">门店提供空白风筝（含竹制骨架）、环保水彩颜料、粗细画笔、调色盘、湿巾等基础材料，如需特殊装饰可自带。</p>
+          </div>
+        </div>
+        
+        <div class="border border-spring-light rounded-lg overflow-hidden">
+          <button class="faq-btn w-full flex justify-between items-center p-5 text-left bg-spring-light/30 hover:bg-spring-light/50 transition-colors">
+            <span class="font-medium">门店青团是现做的吗？有无忌口选项？</span>
+            <i class="fa fa-chevron-down text-spring-green transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-5 border-t border-spring-light/50">
+            <p class="text-spring-brown/80">门店青团每日新鲜制作，提供豆沙、咸蛋黄肉松两种口味。如有坚果过敏等特殊需求，可提前告知门店工作人员。</p>
+          </div>
+        </div>
+        
+        <div class="border border-spring-light rounded-lg overflow-hidden">
+          <button class="faq-btn w-full flex justify-between items-center p-5 text-left bg-spring-light/30 hover:bg-spring-light/50 transition-colors">
+            <span class="font-medium">柳枝发冠在门店哪个位置领取？</span>
+            <i class="fa fa-chevron-down text-spring-green transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-5 border-t border-spring-light/50">
+            <p class="text-spring-brown/80">满足消费条件后，可凭小票到门店一楼服务台领取柳枝发冠，服务台旁设有清明主题打卡点，方便拍照分享。</p>
+          </div>
+        </div>
+        
+        <div class="border border-spring-light rounded-lg overflow-hidden">
+          <button class="faq-btn w-full flex justify-between items-center p-5 text-left bg-spring-light/30 hover:bg-spring-light/50 transition-colors">
+            <span class="font-medium">预约后到店有什么特权？</span>
+            <i class="fa fa-chevron-down text-spring-green transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-5 border-t border-spring-light/50">
+            <p class="text-spring-brown/80">预约成功的顾客到店参与风筝活动可优先领取材料包，无需排队等候，还可获得门店专属清明小贴纸（数量有限）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="py-16 md:py-24 bg-spring-brown/5">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-12">
+        <div class="md:w-1/2">
+          <h2 class="font-serif font-bold text-[clamp(1.5rem,3vw,2.5rem)] mb-6 text-spring-brown">
+            门店信息
+          </h2>
+          <p class="text-spring-brown/80 mb-8 text-lg">
+            欢迎到店参与活动，如有疑问可通过以下方式联系我们
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-spring-green text-white p-3 rounded-full">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">门店地址</h3>
+                <p class="text-spring-brown/80">XX市XX区XX路XX号（地铁X号线XX站步行5分钟）</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="bg-spring-green text-white p-3 rounded-full">
+                <i class="fa fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">门店电话</h3>
+                <p class="text-spring-brown/80">010-XXXXXXX</p>
+                <p class="text-spring-brown/60 text-sm">服务时间：每日9:00-22:00</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="bg-spring-green text-white p-3 rounded-full">
+                <i class="fa fa-weixin"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-1">门店公众号</h3>
+                <p class="text-spring-brown/80">扫码关注获取活动最新动态</p>
+                <div class="mt-2 bg-white p-2 inline-block rounded">
+                  <img src="https://picsum.photos/id/1060/100/100" alt="门店微信二维码" class="w-32 h-32">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2">
+          <div class="h-full rounded-xl overflow-hidden shadow-lg">
+            <!-- 门店外观图 -->
+            <img src="https://picsum.photos/id/42/800/600" alt="门店外观" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-spring-brown text-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center space-x-2 mb-3">
+            <i class="fa fa-leaf text-spring-light text-2xl"></i>
+            <span class="font-serif font-bold text-xl">清明雅集</span>
+          </div>
+          <p class="text-white/70 max-w-xs">
+            门店与您共度清明，传承传统，拥抱春日
+          </p>
+        </div>
+        
+        <div class="flex space-x-6">
+          <a href="#" class="text-white hover:text-spring-light transition-colors text-xl">
+            <i class="fa fa-weibo"></i>
+          </a>
+          <a href="#" class="text-white hover:text-spring-light transition-colors text-xl">
+            <i class="fa fa-weixin"></i>
+          </a>
+          <a href="#" class="text-white hover:text-spring-light transition-colors text-xl">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="#" class="text-white hover:text-spring-light transition-colors text-xl">
+            <i class="fa fa-youtube-play"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+        <p>© 2024 门店清明活动组委会 版权所有 | 活动最终解释权归门店所有</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-spring-green text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // 移动端菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2', 'shadow');
+        navbar.classList.remove('py-3');
+      } else {
+        navbar.classList.add('py-3');
+        navbar.classList.remove('py-2', 'shadow');
+      }
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // 关闭移动端菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // FAQ 折叠效果
+    const faqBtns = document.querySelectorAll('.faq-btn');
+    
+    faqBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        
+        // 切换当前FAQ的显示状态
+        content.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+        
+        // 关闭其他打开的FAQ
+        faqBtns.forEach(otherBtn => {
+          if (otherBtn !== btn) {
+            const otherContent = otherBtn.nextElementSibling;
+            const otherIcon = otherBtn.querySelector('i');
+            
+            if (!otherContent.classList.contains('hidden')) {
+              otherContent.classList.add('hidden');
+              otherIcon.classList.remove('rotate-180');
+            }
+          }
+        });
+      });
+    });
+    
+    // 返回顶部按钮
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
